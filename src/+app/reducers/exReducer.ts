@@ -1,15 +1,11 @@
-import { exActionTypes } from '../actions/exAction';
+import { exActionTypes } from 'src/+app/actions/exAction';
 
-export const initialExState = {
+const initialState = {
   example: 'example 1',
   example2: 'example 2'
 };
 
-export function initEx(initialExState: object) {
-  return initialExState;
-}
-
-export function exReducer(state: any, action: any) {
+export default function exReducer(state: any = initialState, action: any) {
   switch (action.type) {
     case exActionTypes.SET_EXAMPLE: {
       return {
