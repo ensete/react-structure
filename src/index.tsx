@@ -7,6 +7,7 @@ import createSagaMiddleware from 'redux-saga';
 import { logger } from 'redux-logger';
 import 'src/assets/styles/index.scss';
 import App from 'src/+app/components/App';
+import GlobalErrorBoundary from 'src/+app/components/error-boundaries/GlobalErrorBoundary';
 import * as serviceWorker from './serviceWorker';
 import rootSaga from 'src/+app/sagas';
 import rootReducer from 'src/+app/reducers';
@@ -23,14 +24,16 @@ const store = createStore(rootReducer, applyMiddleware(...middleware));
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render((
-  <Provider store={store}>
-    <Router>
-      <Switch>
-        <Route exact path="/customPath" component={App} />
-        <Redirect to={`/customPath`}/>
-      </Switch>
-    </Router>
-  </Provider>
+  <GlobalErrorBoundary>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route exact path="/customPath" component={App} />
+          <Redirect to={`/customPath`}/>
+        </Switch>
+      </Router>
+    </Provider>
+  </GlobalErrorBoundary>
 ), document.getElementById('root'));
 
 serviceWorker.unregister();
