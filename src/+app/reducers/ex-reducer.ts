@@ -1,4 +1,4 @@
-import { exActionTypes } from 'src/+app/actions/exAction';
+import { exActionTypes } from 'src/+app/actions/ex-action';
 
 const initialState = {
   example: 'example 1',

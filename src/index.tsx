@@ -26,6 +26,7 @@ const App = (
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
             <Route exact path="/customPath" component={AppComponent} />
+            <Route exact path="/otherPath/:id" component={AppComponent} />
             <Redirect to={`/customPath`}/>
           </Switch>
         </Suspense>

@@ -1,5 +1,5 @@
 import { takeLatest, select } from 'redux-saga/effects';
-import { exActionTypes } from "../actions/exAction";
+import { exActionTypes } from "../actions/ex-action";
 
 const getEx = (state: any) => state.ex;
 
