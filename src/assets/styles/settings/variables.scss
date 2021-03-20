@@ -1,11 +1,12 @@
 /* ============ Settings ============ */
 $container-width: 1200px;
-$image-path: '../images/';
+$image-path: '~src/assets/images/';
 
 /* ============ Fonts ============ */
-$font-montserrat: 'Montserrat', sans-serif;;
+$font-base: 'Montserrat', sans-serif;;
 
 /* ============ Colors ============ */
+$black: #333333;
 $blue: #2276e5;
 
 /* ============ Breakpoints ============ */

@@ -4,6 +4,7 @@ import MetamaskService from "src/app/services/accounts/MetamaskService";
 import WalletConnectService from "src/app/services/accounts/WalletConnectService";
 import DappService from "src/app/services/accounts/DappService";
 import Web3 from "web3";
+import BigNumber from "bignumber.js";
 
 export function getAnimatedJsonOptions(json: any) {
   return {
@@ -16,7 +17,7 @@ export function getAnimatedJsonOptions(json: any) {
   }
 }
 
-export function getWalletParams(address: string | null) {
+export function getWalletParams(address?: string) {
   return {
     nodeUrl: ENV.NODE.URL,
     nodeTimeout: ENV.NODE.CONNECTION_TIMEOUT,
@@ -85,4 +86,35 @@ export function checkIsMetamask() {
   }
 
   return isMetamask;
+}
+
+export function roundNumber(number: number, precision = 6, isFormatted = false) {
+  if (!number) return 0;
+
+  const amountBigNumber = new BigNumber(number);
+  const amountString = amountBigNumber.toFixed().toString();
+  const indexOfDecimal = amountString.indexOf('.');
+  const roundedNumber = indexOfDecimal !== -1 ? amountString.slice(0, indexOfDecimal + (precision + 1)) : amountString;
+
+  return isFormatted ? formatNumber(roundedNumber, precision) : roundedNumber;
+}
+
+export function formatNumber(number: any, precision = 0) {
+  if (!number) return 0;
+  if (number < 1) return +(+number).toFixed(6);
+
+  let bigNumber = new BigNumber(number);
+  let formattedNumber = bigNumber.toFormat(precision);
+  const numberParts = formattedNumber.split('.');
+
+  if (numberParts.length === 2 && !+numberParts[1]) {
+    formattedNumber = numberParts[0];
+  }
+
+  return formattedNumber;
+}
+
+export function formatAddress(address: string, first = 10, last = -4) {
+  if (!address) return '';
+  return `${address.slice(0, first)}...${address.slice(last)}`;
 }

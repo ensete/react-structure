@@ -8,13 +8,14 @@ export default class BaseWalletService {
   networkId: number
   chainName: string
   web3: any
+  needTobeInitiated: any
 
   constructor(props: any) {
     this.ethereum = null;
-    this.address = props ? props.address : null;
-    this.nodeUrl = props.nodeUrl;
-    this.networkId = props.networkId;
-    this.chainName = props.chainName;
+    this.address = props?.address;
+    this.nodeUrl = props?.nodeUrl;
+    this.networkId = props?.networkId;
+    this.chainName = props?.chainName;
     this.web3 = new Web3(new Web3.providers.HttpProvider(this.nodeUrl));
   }
 
@@ -25,11 +26,12 @@ export default class BaseWalletService {
     }
 
     const currentNetworkId = await this._getCurrentNetworkId();
+
     if (!currentNetworkId) {
       this._returnEthereumError(onEthereumError, 'Error: Cannot find current network ID');
       return false;
-    } else if (+currentNetworkId !== this.networkId) {
-      if (typeof onNetworkError === 'function') onNetworkError();
+    } else if (currentNetworkId !== this.networkId) {
+      if (typeof onNetworkError === 'function') onNetworkError(currentNetworkId);
       return false
     }
 
@@ -43,7 +45,7 @@ export default class BaseWalletService {
     return this.address;
   };
 
-  getDisconnected = (clearAccount: any, importAccount: any, wallet: any) => {
+  getDisconnected = (clearAccount?: any, importAccount?: any, wallet?: any) => {
     this._throwErrorOnNetworkError(clearAccount);
 
     this.ethereum.on('accountsChanged', async (accounts: any) => {
@@ -126,7 +128,7 @@ export default class BaseWalletService {
     })
   };
 
-  _throwErrorOnNetworkError = async (actionOnError: any | null) => {
+  _throwErrorOnNetworkError = async (actionOnError?: any) => {
     const currentNetworkId = await this._getCurrentNetworkId();
     if (!currentNetworkId || +currentNetworkId !== this.networkId) {
       if (actionOnError) {

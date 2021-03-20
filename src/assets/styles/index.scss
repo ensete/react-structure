@@ -1,5 +1,9 @@
-@import "commons/variables";
-@import "commons/animations";
-@import "commons/elements";
+@import "settings/mixins";
+@import "settings/variables";
+@import "settings/animations";
+@import "settings/elements";
+
+@import "commons/parts";
+@import "commons/modal";
 
 @import "components/app";

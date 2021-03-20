@@ -15,10 +15,11 @@ export default function accountReducer(state = initialState, action: any) {
 
       if (action.key === 'account' && lastData && lastData.type) {
         const wallet = getWalletByType(lastData.address, lastData.type);
-        if (wallet) return { ...state, wallet };
+        if (wallet) return {...state, wallet};
+        return initialState;
       }
 
-      return { ...state }
+      return {...state}
     }
     case accountActionTypes.IMPORT_ACCOUNT: {
       const { address, wallet, type } = action.payload;

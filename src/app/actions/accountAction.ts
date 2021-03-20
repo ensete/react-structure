@@ -3,7 +3,7 @@ export const accountActionTypes = {
   CLEAR_ACCOUNT: 'ACCOUNT.CLEAR_ACCOUNT',
 };
 
-export function importAccount(address, wallet, type) {
+export function importAccount(address: string, wallet: any, type: string) {
   return {
     type: accountActionTypes.IMPORT_ACCOUNT,
     payload: { address, wallet, type }
