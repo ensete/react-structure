@@ -1,0 +1,64 @@
+.account {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  &__close {
+    position: absolute;
+    top: 2px;
+    right: 15px;
+    font-size: 22px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__item {
+    width: 48%;
+    height: 50px;
+    padding: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: solid 1px transparent;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+      background-color: lighten(black, 20);
+    }
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  &__icon {
+    width: 34px;
+    height: 34px;
+    margin-right: 12px;
+    background-size: cover;
+
+    &.metamask {
+      background-image: url($image-path + 'logos/metamask.svg');
+    }
+
+    &.wallet-connect {
+      width: 36px;
+      height: 20px;
+      background-image: url($image-path + 'logos/wallet-connect.svg');
+    }
+
+    &.wallet-link {
+      border-radius: 50%;
+      background-image: url($image-path + 'logos/wallet-link.svg');
+    }
+  }
+}

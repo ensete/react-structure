@@ -12,8 +12,8 @@ export default function ImportModal() {
       content={(
         <div className="account">
           <MetamaskAccount/>
-          <WalletLinkAccount/>
           <WalletConnectAccount/>
+          <WalletLinkAccount/>
         </div>
       )}
     />

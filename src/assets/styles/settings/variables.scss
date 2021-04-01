@@ -6,12 +6,16 @@ $image-path: '~src/assets/images/';
 $font-base: 'Montserrat', sans-serif;;
 
 /* ============ Colors ============ */
-$black: #333333;
-$blue: #2276e5;
+$text: #333333;
+$bg: #F1F4F8;
+
 $color-1: #23a7b5;
 $color-2: #3fa3c4;
 $color-3: #093d4e;
 $color-4: #0a4b61;
+$color-5: #2C7BFF;
+
+$gradient-1: linear-gradient(800deg, #1FC0E1, #1EE2CC);
 
 /* ============ Breakpoints ============ */
 $breakpoint-xxl: 1000px;

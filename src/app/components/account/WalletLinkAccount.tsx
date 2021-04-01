@@ -30,7 +30,7 @@ export default function WalletLinkAccount(props: any) {
 
   return (
     <div className={`account__item ${props.className}`} onClick={connect}>
-      <div className="account__icon coinbase-wallet"/>
+      <div className="account__icon wallet-link"/>
       <div className="account__name">Coinbase</div>
     </div>
   )

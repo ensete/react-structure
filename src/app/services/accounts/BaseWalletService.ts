@@ -155,7 +155,7 @@ export default class BaseWalletService {
     let accounts;
 
     if (this.ethereum) {
-      accounts = await this.ethereum.request({ method: 'eth_requestAccounts' });
+      accounts = await this.ethereum.send('eth_requestAccounts');
     } else {
       accounts = await this.web3.eth.getAccounts();
     }

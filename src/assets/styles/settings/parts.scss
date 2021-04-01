@@ -224,18 +224,18 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    color: $black;
+    color: $text;
     transform: translateY(-50%);
     cursor: pointer;
     transition: color .3s;
 
     &:hover {
-      color: darken($black, 10);
+      color: darken($text, 10);
     }
   }
 
   &__content {
-    color: white;
+    color: $text;
     width: 440px;
     background-color: white;
     padding: 50px 30px 40px;
@@ -278,16 +278,70 @@
   width: 430px;
   max-width: 100%;
 
+  &.large {
+    width: 750px;
+  }
+
+  &.medium {
+    width: 450px;
+  }
+
+  &.small {
+    width: 315px;
+  }
+
+  &__title {
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+
   &__panel {
-    border-top: 1px dashed white;
+    border-top: 1px dashed grey;
     text-align: center;
-    padding: 25px 0 0;
-    margin-top: 35px;
+    padding: 20px 0 0;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
 
     .btn {
       width: 120px;
     }
+  }
+}
+
+.btn {
+  text-align: center;
+  width: 200px;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 10px 12px;
+  border-radius: 26px;
+  border: solid 1px $color-1;
+  cursor: pointer;
+  color: $color-1;
+  transition: all .3s;
+
+  &:hover {
+    color: white;
+    background-color: $color-2;
+  }
+
+  &--gradient {
+    color: white;
+    border: none;
+    padding: 11px 15px 13px;
+    background-position: 0 100%;
+    background-size: auto 200%;
+    background-image: $gradient-1;
+
+    &:hover {
+      background-position: 0 0;
+    }
+  }
+
+  &--small {
+    width: 110px;
+    font-size: 12px;
+    padding: 6px 0 7px;
   }
 }
