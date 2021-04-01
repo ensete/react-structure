@@ -28,7 +28,7 @@ export default function useSettingUpAccount() {
     }
 
     if (isWeb3Imported && (!isMetamask || isMobile)) {
-      const walletParams = getWalletParams(null);
+      const walletParams = getWalletParams();
       const wallet = new DappService(walletParams);
       const address = await wallet.connect(openConnectErrorModal, openNetworkErrorModal);
 
