@@ -5,7 +5,7 @@ import { WALLET_TYPES } from "src/app/configs/constants";
 import BaseWalletService from "src/app/services/accounts/BaseWalletService";
 
 export default class WalletConnectService extends BaseWalletService {
-  walletConnector: any
+  walletConnector:any
 
   constructor(props?: any) {
     super(props);
@@ -40,7 +40,7 @@ export default class WalletConnectService extends BaseWalletService {
 
       WalletConnectQRCodeModal.close();
 
-      const {accounts, chainId} = payload.params[0];
+      const { accounts, chainId } = payload.params[0];
 
       if (chainId !== this.networkId) {
         const expectedNetwork = fromNetworkIdToName(this.networkId);

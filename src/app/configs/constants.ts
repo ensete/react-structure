@@ -7,6 +7,7 @@ export const ROUTES = {
 export const WALLET_TYPES = {
   METAMASK: 'metamask',
   WALLET_CONNECT: 'wallet connect',
+  WALLET_LINK: 'wallet link',
   DAPP: 'dapp'
 };
 export const ACTIONS = {

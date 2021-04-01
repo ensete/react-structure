@@ -6,8 +6,10 @@ import useSettingUpAccount from "src/app/hooks/useSettingUpAccount";
 import GlobalErrorBoundary from "src/app/components/error-boundaries/GlobalErrorBoundary";
 import Home from "src/app/components/home/Home";
 import { ModalListener } from "src/app/components/commons/ModalListener";
+import useFetchingData from "src/app/hooks/useFetchingData";
 
 const App: React.FC = () => {
+  useFetchingData();
   useSettingUpAccount();
 
   return (

@@ -36,6 +36,16 @@ b {
   font-weight: 500;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .container {
   max-width: $container-width;
   padding: 0 16px;
@@ -91,7 +101,7 @@ b {
 
 .flex-start {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .flex-between-center {

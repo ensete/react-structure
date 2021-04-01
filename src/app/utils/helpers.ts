@@ -5,6 +5,7 @@ import WalletConnectService from "src/app/services/accounts/WalletConnectService
 import DappService from "src/app/services/accounts/DappService";
 import Web3 from "web3";
 import BigNumber from "bignumber.js";
+import WalletLinkService from "src/app/services/accounts/WalletLinkService";
 
 export function getAnimatedJsonOptions(json: any) {
   return {
@@ -49,6 +50,8 @@ export function getWalletByType(address: string, type: string) {
     wallet = new MetamaskService(props);
   } else if (type === WALLET_TYPES.WALLET_CONNECT) {
     wallet = new WalletConnectService(props);
+  } else if (type === WALLET_TYPES.WALLET_LINK) {
+    wallet = new WalletLinkService(props);
   } else if (type === WALLET_TYPES.DAPP) {
     wallet = new DappService(props);
   }
@@ -69,6 +72,10 @@ export function fromNetworkIdToName(networkId: number) {
     networkName = 'Goerli Test';
   } else if (networkId === 42) {
     networkName = 'Kovan';
+  } else if (networkId === 97) {
+    networkName = 'BSC testnet';
+  } else if (networkId === 56) {
+    networkName = 'BSC mainnet';
   }
 
   return networkName;
@@ -88,7 +95,16 @@ export function checkIsMetamask() {
   return isMetamask;
 }
 
-export function roundNumber(number: number, precision = 6, isFormatted = false) {
+export function formatBigNumber(number: number | string, decimals = 18) {
+  if (!number) return 0;
+
+  const bigNumber = new BigNumber(number.toString());
+  const result = bigNumber.div(Math.pow(10, decimals));
+
+  return result.toString();
+}
+
+export function roundNumber(number: number | string, precision = 6, isFormatted = false) {
   if (!number) return 0;
 
   const amountBigNumber = new BigNumber(number);
@@ -96,12 +112,12 @@ export function roundNumber(number: number, precision = 6, isFormatted = false) 
   const indexOfDecimal = amountString.indexOf('.');
   const roundedNumber = indexOfDecimal !== -1 ? amountString.slice(0, indexOfDecimal + (precision + 1)) : amountString;
 
-  return isFormatted ? formatNumber(roundedNumber, precision) : roundedNumber;
+  return isFormatted ? displayFormattedNumber(roundedNumber, precision) : roundedNumber;
 }
 
-export function formatNumber(number: any, precision = 0) {
+export function displayFormattedNumber(number: any, precision = 0) {
   if (!number) return 0;
-  if (number < 1) return +(+number).toFixed(6);
+  if (number > 0 && number < 1) return +(+number).toFixed(6);
 
   let bigNumber = new BigNumber(number);
   let formattedNumber = bigNumber.toFormat(precision);
@@ -117,4 +133,38 @@ export function formatNumber(number: any, precision = 0) {
 export function formatAddress(address: string, first = 10, last = -4) {
   if (!address) return '';
   return `${address.slice(0, first)}...${address.slice(last)}`;
+}
+
+export function isAddress(address: string) {
+  return Web3.utils.isAddress(address);
+}
+
+export function toGwei(number: number | string) {
+  const bigNumber = new BigNumber(number.toString());
+  return bigNumber.div(1000000000).toString();
+}
+
+export function toWei(number: number | string) {
+  return toBigAmount(number, 9);
+}
+
+export function toBigAmount(number: number | string, decimal = 18) {
+  const bigNumber = new BigNumber(number.toString());
+  return bigNumber.times(Math.pow(10, decimal)).toFixed(0)
+}
+
+export function multiplyOfTwoNumber(firstNumber: number | string, secondNumber: number | string) {
+  const firstBigNumber = new BigNumber(firstNumber);
+  const secondBigNumber = new BigNumber(secondNumber);
+
+  return firstBigNumber.multipliedBy(secondBigNumber).toString();
+}
+
+export function calculateTxFee(gasPrice: number | string, gasLimit: number | string, precision = 7) {
+  return roundNumber(multiplyOfTwoNumber(toGwei(gasPrice), gasLimit), precision);
+}
+
+export function toHex(number: string | number) {
+  const bigNumber = new BigNumber(number);
+  return "0x" + bigNumber.toString(16);
 }

@@ -4,14 +4,14 @@ import Modal from "src/app/components/commons/Modal";
 const modalService = {
   currentHandler: Function,
   closeFn: Function,
-  reg: function (fn: any, closeFn: any) {
+  register: function (fn: any, closeFn: any) {
     this.currentHandler = fn;
     this.closeFn = closeFn;
   },
   show: function (Component: React.ComponentType<any>, props = {}, onClose?: any) {
     this.currentHandler(
       // @ts-ignore
-      (close: any) => <Component {...{close}} {...props} />,
+      (close: any) => <Component close={close} {...props} />,
       onClose,
       props,
     )
@@ -24,28 +24,31 @@ const modalService = {
 };
 
 const ModalListener = () => {
-  const [ modalContent, setModalContent ] = useState("");
-  const [ , setOnClose ] = useState(null);
-  const [ props, setProps ] = useState({});
+  const [modalContent, setModalContent] = useState("");
+  const [isActive, setIsActive] = useState(false);
+  const [onClose, setOnClose] = useState<Function | null>(null);
+  const [props, setProps] = useState({});
 
   const close = () => {
-    setModalContent("");
+    if (onClose != null) onClose();
+    setIsActive(false);
+    setTimeout(() => {
+      setModalContent("");
+    }, 200);
     setOnClose(null);
   };
 
   useEffect(() => {
-    modalService.reg((content: any, onClose: any, modalProps: any) => {
+    modalService.register((content: any, onClose: any, modalProps: any) => {
       setOnClose(() => onClose);
       setProps(modalProps);
-      setModalContent(typeof content === "function" ? content(() => {
-        if (onClose != null) onClose();
-        setModalContent("");
-      }) : content);
+      setModalContent(content(close));
+      setIsActive(true);
     }, close)
   }, []); // eslint-disable-line
 
   return (
-    <Modal isActive={!!modalContent} {...props} onClose={close}>
+    <Modal isActive={isActive} {...props} onClose={close}>
       {modalContent}
     </Modal>
   )

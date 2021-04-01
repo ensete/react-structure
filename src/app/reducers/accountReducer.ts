@@ -3,9 +3,9 @@ import { accountActionTypes } from 'src/app/actions/accountAction';
 import { getWalletByType } from "src/app/utils/helpers";
 
 const initialState = {
-  address: null,
-  wallet: null,
-  type: null
+  address: '',
+  type: '',
+  wallet: null
 };
 
 export default function accountReducer(state = initialState, action: any) {
