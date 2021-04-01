@@ -4,7 +4,7 @@ import WalletLinkAccount from "src/app/components/account/WalletLinkAccount";
 import WalletConnectAccount from "src/app/components/account/WalletConnectAccount";
 import BasicModalContent from "src/app/components/commons/BasicModalContent";
 
-const ImportModal: React.FC = () => {
+export default function ImportModal() {
   return (
     <BasicModalContent
       customTitle="Import your Wallet"
@@ -18,6 +18,4 @@ const ImportModal: React.FC = () => {
       )}
     />
   )
-};
-
-export default ImportModal;
+}

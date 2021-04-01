@@ -21,7 +21,6 @@ const App: React.FC = () => {
             <Redirect to={ROUTES.HOME}/>
           </Switch>
         </BrowserRouter>
-
         <ModalListener/>
       </GlobalErrorBoundary>
     </div>
