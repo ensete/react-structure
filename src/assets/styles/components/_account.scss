@@ -61,4 +61,10 @@
       background-image: url($image-path + 'logos/wallet-link.svg');
     }
   }
+
+  @media screen and (max-width: $breakpoint-s) {
+    &__name {
+      font-size: 10px;
+    }
+  }
 }

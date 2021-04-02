@@ -237,9 +237,10 @@
   &__content {
     color: $text;
     width: 440px;
+    max-width: 95%;
     background-color: white;
     padding: 50px 30px 40px;
-    margin: 10px 0 50px;
+    margin: 10px auto 50px;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -265,8 +266,8 @@
       right: 14px;
     }
 
-    &-content {
-      padding: 25px 15px !important;
+    &__content {
+      padding: 35px 16px;
     }
   }
 }
