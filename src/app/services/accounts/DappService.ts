@@ -1,4 +1,4 @@
-import { WALLET_TYPES } from "src/app/configs/constants";
+import { WALLET_TYPE } from "src/app/configs/constants";
 import MetamaskService from "src/app/services/accounts/MetamaskService";
 
 export default class DappService extends MetamaskService {
@@ -7,6 +7,6 @@ export default class DappService extends MetamaskService {
   };
 
   getWalletType = () => {
-    return WALLET_TYPES.DAPP;
+    return WALLET_TYPE.DAPP;
   }
 }

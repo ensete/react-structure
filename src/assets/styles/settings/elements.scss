@@ -8,6 +8,12 @@
 @include generateSpacingClasses(pt, padding-top);
 @include generateSpacingClasses(pb, padding-bottom);
 
+@include generateFontSizeClasses(fs, font-size);
+@include generateFontWeightClasses(fw, font-weight);
+
+@include generatePositionClasses(top, top);
+@include generatePositionClasses(bot, bottom);
+
 * {
   box-sizing: border-box;
 }
@@ -22,6 +28,8 @@ body {
 
 input {
   font-family: $font-base;
+  outline: none;
+  box-shadow: none;
 }
 
 a {
@@ -61,18 +69,12 @@ input[type=number] {
   animation: fade-in 0.3s forwards;
 }
 
-.top-1 {
-  position: relative;
-  top: 1px;
-}
-
-.top-2 {
-  position: relative;
-  top: 2px;
-}
-
 .inline-block {
   display: inline-block;
+}
+
+.align-center {
+  text-align: center;
 }
 
 .align-left {
@@ -83,29 +85,21 @@ input[type=number] {
   text-align: right;
 }
 
-.font-small {
-  font-size: 12px;
-}
-
-.circle-radius {
-  border-radius: 50%;
+.pointer {
+  cursor: pointer;
 }
 
 .flex {
   display: flex;
 }
 
-.flex-center {
+.flex-center-center {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.flex-start {
-  display: flex;
-  align-items: flex-start;
-}
-
-.flex-between-center {
+.flex-center-between {
   display: flex;
   align-items: center;
   justify-content: space-between;

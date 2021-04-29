@@ -1,5 +1,5 @@
 import ENV from "src/app/configs/env";
-import { WALLET_TYPES } from "src/app/configs/constants";
+import { WALLET_TYPE } from "src/app/configs/constants";
 import MetamaskService from "src/app/services/accounts/MetamaskService";
 import WalletConnectService from "src/app/services/accounts/WalletConnectService";
 import DappService from "src/app/services/accounts/DappService";
@@ -46,13 +46,13 @@ export function getWalletByType(address: string, type: string) {
   let wallet = null;
   const props = getWalletParams(address);
 
-  if (type === WALLET_TYPES.METAMASK) {
+  if (type === WALLET_TYPE.METAMASK) {
     wallet = new MetamaskService(props);
-  } else if (type === WALLET_TYPES.WALLET_CONNECT) {
+  } else if (type === WALLET_TYPE.WALLET_CONNECT) {
     wallet = new WalletConnectService(props);
-  } else if (type === WALLET_TYPES.WALLET_LINK) {
+  } else if (type === WALLET_TYPE.WALLET_LINK) {
     wallet = new WalletLinkService(props);
-  } else if (type === WALLET_TYPES.DAPP) {
+  } else if (type === WALLET_TYPE.DAPP) {
     wallet = new DappService(props);
   }
 

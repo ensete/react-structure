@@ -1,4 +1,4 @@
-import { WALLET_TYPES } from "src/app/configs/constants";
+import { WALLET_TYPE } from "src/app/configs/constants";
 import { detectWeb3Object } from "src/app/utils/helpers";
 import BaseWalletService from "src/app/services/accounts/BaseWalletService";
 
@@ -17,6 +17,6 @@ export default class MetamaskService extends BaseWalletService {
   };
 
   getWalletType = () => {
-    return WALLET_TYPES.METAMASK;
+    return WALLET_TYPE.METAMASK;
   }
 }

@@ -1,6 +1,6 @@
-import { TxType } from "src/app/types/tx-type";
+import { Tx } from "src/app/types/tx-type";
 
-export function createTxObject(data: any): TxType {
+export function createTxObject(data: any): Tx {
   return {
     from: data.from,
     to: data.to,

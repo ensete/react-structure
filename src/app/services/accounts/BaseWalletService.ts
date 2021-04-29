@@ -1,5 +1,6 @@
 import Web3 from "web3";
 import { fromNetworkIdToName } from "src/app/utils/helpers";
+import { Tx } from "src/app/types/tx";
 
 export default class BaseWalletService {
   ethereum: any
@@ -52,8 +53,10 @@ export default class BaseWalletService {
       if (accounts[0] === this.address) return;
 
       this.address = await this._requestAccounts();
-      wallet.address = this.address;
-      importAccount(this.address, wallet, wallet.getWalletType());
+      if (wallet) {
+        wallet.address = this.address;
+        importAccount(this.address, wallet, wallet.getWalletType());
+      }
     });
 
     this.ethereum.on('chainChanged', (networkId: any) => {
@@ -62,7 +65,7 @@ export default class BaseWalletService {
     });
   };
 
-  makeTransaction = async (txObject: any, privateKey: string, devicePath: string) => {
+  makeTransaction = async (txObject: Tx, privateKey: string, devicePath: string) => {
     try {
       let txHash;
 

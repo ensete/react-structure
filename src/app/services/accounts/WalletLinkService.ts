@@ -2,6 +2,7 @@ import Web3 from "web3";
 import WalletLink from 'walletlink';
 import ENV from "src/app/configs/env";
 import BaseWalletService from "src/app/services/accounts/BaseWalletService";
+import { WALLET_TYPE } from "src/app/configs/constants";
 
 export default class WalletLinkService extends BaseWalletService {
   walletLink: WalletLink;
@@ -10,8 +11,8 @@ export default class WalletLinkService extends BaseWalletService {
     super(props);
 
     const walletLink = new WalletLink({
-      appName: 'KyberDAO',
-      appLogoUrl: 'https://kyber.network/app/images/kyber-logo.svg'
+      appName: 'ReactStructure',
+      appLogoUrl: ''
     });
 
     this.ethereum = walletLink.makeWeb3Provider(ENV.NODE.URL, ENV.NETWORK_ID);
@@ -23,7 +24,7 @@ export default class WalletLinkService extends BaseWalletService {
     this.walletLink.disconnect();
   };
 
-  getWalletName = () => {
-    return 'Coinbase';
+  getWalletType = () => {
+    return WALLET_TYPE.WALLET_LINK;
   }
 }

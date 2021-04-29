@@ -1,11 +1,11 @@
 import WalletConnect from "@walletconnect/browser";
 import WalletConnectQRCodeModal from "@walletconnect/qrcode-modal";
 import { fromNetworkIdToName } from "src/app/utils/helpers";
-import { WALLET_TYPES } from "src/app/configs/constants";
+import { WALLET_TYPE } from "src/app/configs/constants";
 import BaseWalletService from "src/app/services/accounts/BaseWalletService";
 
 export default class WalletConnectService extends BaseWalletService {
-  walletConnector:any
+  walletConnector: any
 
   constructor(props?: any) {
     super(props);
@@ -91,6 +91,6 @@ export default class WalletConnectService extends BaseWalletService {
   };
 
   getWalletType = () => {
-    return WALLET_TYPES.WALLET_CONNECT;
+    return WALLET_TYPE.WALLET_CONNECT;
   }
 }

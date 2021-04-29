@@ -3,26 +3,29 @@ import { useDispatch } from "react-redux";
 import MetamaskService from "src/app/services/accounts/MetamaskService";
 import ENV from "src/app/configs/env";
 import { clearAccount, importAccount } from "src/app/actions/accountAction";
-import { WALLET_TYPES } from "src/app/configs/constants";
+import { WALLET_TYPE } from "src/app/configs/constants";
 import { fromNetworkIdToName, getWalletParams } from "src/app/utils/helpers";
-import { modalService } from "src/app/components/commons/ModalListener";
-import BasicModalContent from "src/app/components/commons/BasicModalContent";
+import { modalService } from "src/app/components/commons/modals/ModalListener";
+import BasicModalContent from "src/app/components/commons/modals/BasicModalContent";
+import { setGlobalModal } from "src/app/actions/globalAction";
 
 export default function MetamaskAccount(props: any) {
   const dispatch = useDispatch();
 
   async function connect() {
+    dispatch(setGlobalModal('loading', true));
+
     const props = getWalletParams();
     const wallet = new MetamaskService(props);
     const address = await wallet.connect(openConnectErrorModal, openNetworkErrorModal);
 
-    if (!address) return;
+    if (address) {
+      wallet.getDisconnected(() => dispatch(clearAccount()));
+      dispatch(importAccount(address, wallet, WALLET_TYPE.METAMASK));
+      modalService.close();
+    }
 
-    wallet.getDisconnected(() => dispatch(clearAccount()));
-
-    dispatch(importAccount(address, wallet, WALLET_TYPES.METAMASK));
-
-    modalService.close();
+    dispatch(setGlobalModal('loading', false));
   }
 
   function openConnectErrorModal() {

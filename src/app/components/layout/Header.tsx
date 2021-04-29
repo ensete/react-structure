@@ -1,5 +1,5 @@
 import React from "react";
-import { modalService } from "src/app/components/commons/ModalListener";
+import { modalService } from "src/app/components/commons/modals/ModalListener";
 import ImportModal from "src/app/components/account/ImportModal";
 
 export default function Header() {

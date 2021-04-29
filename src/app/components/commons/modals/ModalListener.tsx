@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Modal from "src/app/components/commons/Modal";
+import Modal from "src/app/components/commons/modals/Modal";
 
 const modalService = {
   currentHandler: Function,

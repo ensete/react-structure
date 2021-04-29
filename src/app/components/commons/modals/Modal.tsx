@@ -4,6 +4,8 @@ type ModalProps = {
   isActive: boolean
   onClose: Function
   children: React.ReactNode
+  className?: string
+  hideCloseBtn?: boolean
   title?: string
 }
 
@@ -25,10 +27,15 @@ const Modal: React.FC<ModalProps> = (props: ModalProps) => {
   }
 
   return (
-    <div className={"modal-overlay" + (props.isActive ? " modal-overlay--active" : "")} onClick={handleClose}>
+    <div
+      className={`modal-overlay ${props.isActive ? "modal-overlay--active" : ""} ${props.className ? props.className : ""}`}
+      onClick={handleClose}
+    >
       <div className={`modal ${props.isActive ? "modal--active" : ""}`}>
         <div className={"modal__content"}>
-          <div className={"modal__close-btn"} onClick={handleClose}>×</div>
+          {props.hideCloseBtn !== true && (
+            <div className={"modal__close-btn"} onClick={handleClose}>×</div>
+          )}
           {props.title && (
             <div className={"modal__title"}>{props.title}</div>
           )}

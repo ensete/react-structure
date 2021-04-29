@@ -6,6 +6,6 @@ export default function useFetchingData() {
   const { address } = useSelector((state: any) => state.account);
 
   useEffect(() => {
-
+    console.log(address);
   }, [address, dispatch]);
 }

@@ -2,9 +2,9 @@ import React from 'react';
 import { useDispatch } from "react-redux";
 import WalletConnectService from "src/app/services/accounts/WalletConnectService";
 import { clearAccount, importAccount } from "src/app/actions/accountAction";
-import { WALLET_TYPES } from "src/app/configs/constants";
-import { modalService } from "src/app/components/commons/ModalListener";
-import BasicModalContent from "src/app/components/commons/BasicModalContent";
+import { WALLET_TYPE } from "src/app/configs/constants";
+import { modalService } from "src/app/components/commons/modals/ModalListener";
+import BasicModalContent from "src/app/components/commons/modals/BasicModalContent";
 import { getWalletParams } from "src/app/utils/helpers";
 
 export default function WalletConnectAccount(props: any) {
@@ -18,7 +18,7 @@ export default function WalletConnectAccount(props: any) {
 
     wallet.getConnected(
       (address: string) => {
-        dispatch(importAccount(address, wallet, WALLET_TYPES.WALLET_CONNECT));
+        dispatch(importAccount(address, wallet, WALLET_TYPE.WALLET_CONNECT));
         modalService.close();
       },
       (errorMessage: string) => openErrorModal(errorMessage)

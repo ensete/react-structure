@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
 import { importAccount } from "src/app/actions/accountAction";
-import { WALLET_TYPES } from "src/app/configs/constants";
+import { WALLET_TYPE } from "src/app/configs/constants";
 import WalletLinkService from "src/app/services/accounts/WalletLinkService";
-import { modalService } from "src/app/components/commons/ModalListener";
-import BasicModalContent from "src/app/components/commons/BasicModalContent";
+import { modalService } from "src/app/components/commons/modals/ModalListener";
+import BasicModalContent from "src/app/components/commons/modals/BasicModalContent";
 import { getWalletParams } from "src/app/utils/helpers";
 
 export default function WalletLinkAccount(props: any) {
@@ -16,7 +16,7 @@ export default function WalletLinkAccount(props: any) {
     const address = await wallet.connect(openEthereumErrorModal);
 
     if (address) {
-      dispatch(importAccount(address, wallet, WALLET_TYPES.WALLET_LINK));
+      dispatch(importAccount(address, wallet, WALLET_TYPE.WALLET_LINK));
       modalService.close();
     }
   }

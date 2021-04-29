@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { clearAccount, importAccount } from "src/app/actions/accountAction";
-import { MOBILE_SCREEN_SIZE, WALLET_TYPES } from "src/app/configs/constants";
+import { MOBILE_SCREEN_SIZE, WALLET_TYPE } from "src/app/configs/constants";
 import ENV from "src/app/configs/env";
 import { getWalletParams, fromNetworkIdToName, checkIsMetamask } from "src/app/utils/helpers";
-import { setGlobalMessage } from "src/app/actions/globalAction";
 import DappService from "src/app/services/accounts/DappService";
+import { modalService } from "src/app/components/commons/modals/ModalListener";
+import BasicModalContent from "src/app/components/commons/modals/BasicModalContent";
 
 export default function useSettingUpAccount() {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ export default function useSettingUpAccount() {
 
       if (!address) return;
 
-      dispatch(importAccount(address, wallet, WALLET_TYPES.DAPP));
+      dispatch(importAccount(address, wallet, WALLET_TYPE.DAPP));
     }
   }
 
@@ -53,10 +54,16 @@ export default function useSettingUpAccount() {
   }
 
   function openConnectErrorModal() {
-    dispatch(setGlobalMessage(true, 'Error: Something went wrong connecting with your Metamask', 'error'));
+    modalService.show(BasicModalContent, {
+      title: "Error",
+      content: 'Error: Something went wrong connecting with your Metamask'
+    });
   }
 
   function openNetworkErrorModal() {
-    dispatch(setGlobalMessage(true, `Please make sure that your network is on ${fromNetworkIdToName(ENV.NETWORK_ID)}`, 'error'))
+    modalService.show(BasicModalContent, {
+      title: "Error",
+      content: `Please make sure that your network is on ${fromNetworkIdToName(ENV.NETWORK_ID)}`
+    });
   }
 }
