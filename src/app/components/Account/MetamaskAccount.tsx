@@ -5,8 +5,8 @@ import ENV from "src/app/configs/env";
 import { clearAccount, importAccount } from "src/app/actions/accountAction";
 import { WALLET_TYPE } from "src/app/configs/constants";
 import { fromNetworkIdToName, getWalletParams } from "src/app/utils/helpers";
-import { modalService } from "src/app/components/commons/modals/ModalListener";
-import BasicModalContent from "src/app/components/commons/modals/BasicModalContent";
+import { modalService } from "src/app/components/Commons/modals/ModalListener";
+import BasicModalContent from "src/app/components/Commons/modals/BasicModalContent";
 import { setGlobalModal } from "src/app/actions/globalAction";
 
 export default function MetamaskAccount(props: any) {

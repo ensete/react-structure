@@ -1,8 +1,8 @@
 import React from "react";
-import MetamaskAccount from "src/app/components/account/MetamaskAccount";
-import WalletLinkAccount from "src/app/components/account/WalletLinkAccount";
-import WalletConnectAccount from "src/app/components/account/WalletConnectAccount";
-import BasicModalContent from "src/app/components/commons/modals/BasicModalContent";
+import MetamaskAccount from "src/app/components/Account/MetamaskAccount";
+import WalletLinkAccount from "src/app/components/Account/WalletLinkAccount";
+import WalletConnectAccount from "src/app/components/Account/WalletConnectAccount";
+import BasicModalContent from "src/app/components/Commons/modals/BasicModalContent";
 
 export default function ImportModal() {
   return (

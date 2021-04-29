@@ -1,13 +1,13 @@
 import React from 'react';
 import { Redirect, Switch, BrowserRouter } from "react-router-dom";
-import Layout from "src/app/components/layout/Layout";
+import Layout from "src/app/components/Layout/Layout";
 import { ROUTE } from "src/app/configs/constants";
 import useSettingUpAccount from "src/app/hooks/useSettingUpAccount";
-import GlobalErrorBoundary from "src/app/components/error-boundaries/GlobalErrorBoundary";
-import Home from "src/app/components/home/Home";
-import { ModalListener } from "src/app/components/commons/modals/ModalListener";
+import GlobalErrorBoundary from "src/app/components/ErrorBoundaries/GlobalErrorBoundary";
+import Home from "src/app/components/Home/Home";
+import { ModalListener } from "src/app/components/Commons/modals/ModalListener";
 import useFetchingData from "src/app/hooks/useFetchingData";
-import LoadingModal from "src/app/components/commons/modals/LoadingModal";
+import LoadingModal from "src/app/components/Commons/modals/LoadingModal";
 
 const App: React.FC = () => {
   useFetchingData();

@@ -1,4 +1,4 @@
-export type Tx = {
+export type TxObject = {
   from: string,
   to: string,
   value: string,

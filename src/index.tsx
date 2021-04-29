@@ -7,7 +7,7 @@ import { logger } from 'redux-logger';
 import { persistStore } from "redux-persist";
 import { PersistGate } from 'redux-persist/integration/react';
 import 'src/assets/styles/index.scss';
-import GlobalErrorBoundary from 'src/app/components/error-boundaries/GlobalErrorBoundary';
+import GlobalErrorBoundary from 'src/app/components/ErrorBoundaries/GlobalErrorBoundary';
 import * as serviceWorker from './serviceWorker';
 import rootSaga from 'src/app/sagas';
 import rootReducer from 'src/app/reducers';

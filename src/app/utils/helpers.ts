@@ -112,10 +112,10 @@ export function roundNumber(number: number | string, precision = 6, isFormatted 
   const indexOfDecimal = amountString.indexOf('.');
   const roundedNumber = indexOfDecimal !== -1 ? amountString.slice(0, indexOfDecimal + (precision + 1)) : amountString;
 
-  return isFormatted ? displayFormattedNumber(roundedNumber, precision) : roundedNumber;
+  return isFormatted ? formatNumber(roundedNumber, precision) : roundedNumber;
 }
 
-export function displayFormattedNumber(number: any, precision = 0) {
+export function formatNumber(number: any, precision = 0) {
   if (!number) return 0;
   if (number > 0 && number < 1) return +(+number).toFixed(6);
 
@@ -158,10 +158,6 @@ export function multiplyOfTwoNumber(firstNumber: number | string, secondNumber: 
   const secondBigNumber = new BigNumber(secondNumber);
 
   return firstBigNumber.multipliedBy(secondBigNumber).toString();
-}
-
-export function calculateTxFee(gasPrice: number | string, gasLimit: number | string, precision = 7) {
-  return roundNumber(multiplyOfTwoNumber(toGwei(gasPrice), gasLimit), precision);
 }
 
 export function toHex(number: string | number) {

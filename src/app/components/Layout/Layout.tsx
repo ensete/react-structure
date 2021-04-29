@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import Header from "src/app/components/layout/Header";
-import Footer from "src/app/components/layout/Footer";
+import Header from "src/app/components/Layout/Header";
+import Footer from "src/app/components/Layout/Footer";
 
 interface LayoutProps {
   component: React.ComponentType<any>;

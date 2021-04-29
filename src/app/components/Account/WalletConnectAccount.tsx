@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import WalletConnectService from "src/app/services/accounts/WalletConnectService";
 import { clearAccount, importAccount } from "src/app/actions/accountAction";
 import { WALLET_TYPE } from "src/app/configs/constants";
-import { modalService } from "src/app/components/commons/modals/ModalListener";
-import BasicModalContent from "src/app/components/commons/modals/BasicModalContent";
+import { modalService } from "src/app/components/Commons/modals/ModalListener";
+import BasicModalContent from "src/app/components/Commons/modals/BasicModalContent";
 import { getWalletParams } from "src/app/utils/helpers";
 
 export default function WalletConnectAccount(props: any) {

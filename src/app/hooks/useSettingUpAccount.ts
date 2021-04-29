@@ -5,8 +5,8 @@ import { MOBILE_SCREEN_SIZE, WALLET_TYPE } from "src/app/configs/constants";
 import ENV from "src/app/configs/env";
 import { getWalletParams, fromNetworkIdToName, checkIsMetamask } from "src/app/utils/helpers";
 import DappService from "src/app/services/accounts/DappService";
-import { modalService } from "src/app/components/commons/modals/ModalListener";
-import BasicModalContent from "src/app/components/commons/modals/BasicModalContent";
+import { modalService } from "src/app/components/Commons/modals/ModalListener";
+import BasicModalContent from "src/app/components/Commons/modals/BasicModalContent";
 
 export default function useSettingUpAccount() {
   const dispatch = useDispatch();

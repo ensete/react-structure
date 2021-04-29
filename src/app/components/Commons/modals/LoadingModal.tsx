@@ -1,8 +1,8 @@
 import React from "react";
-import Loading from "src/app/components/commons/Loading";
+import Loading from "src/app/components/Commons/Loading";
 import { useDispatch, useSelector } from "react-redux";
-import BasicModalContent from "src/app/components/commons/modals/BasicModalContent";
-import Modal from "src/app/components/commons/modals/Modal";
+import BasicModalContent from "src/app/components/Commons/modals/BasicModalContent";
+import Modal from "src/app/components/Commons/modals/Modal";
 import { setGlobalModal } from "src/app/actions/globalAction";
 
 export default function LoadingModal() {

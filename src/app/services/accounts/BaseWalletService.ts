@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import { fromNetworkIdToName } from "src/app/utils/helpers";
-import { Tx } from "src/app/types/tx";
+import { TxObject } from "src/app/types/txType";
 
 export default class BaseWalletService {
   ethereum: any
@@ -65,7 +65,7 @@ export default class BaseWalletService {
     });
   };
 
-  makeTransaction = async (txObject: Tx, privateKey: string, devicePath: string) => {
+  makeTransaction = async (txObject: TxObject, privateKey: string, devicePath: string) => {
     try {
       let txHash;
 
