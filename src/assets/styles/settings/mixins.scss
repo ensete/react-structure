@@ -25,7 +25,7 @@
 @mixin generateFontWeightClasses($prefix, $property) {
   $sizes: [300, 400, 500, 600, 700];
 
-  @for $i from 3 through length($sizes) {
+  @for $i from 1 through length($sizes) {
     $size: nth($sizes, $i);
 
     .#{$prefix}-#{$i} {

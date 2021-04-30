@@ -5,9 +5,9 @@ import { ROUTE } from "src/app/configs/constants";
 import useSettingUpAccount from "src/app/hooks/useSettingUpAccount";
 import GlobalErrorBoundary from "src/app/components/ErrorBoundaries/GlobalErrorBoundary";
 import Home from "src/app/components/Home/Home";
-import { ModalListener } from "src/app/components/Commons/modals/ModalListener";
+import { ModalListener } from "src/app/components/Commons/Modals/ModalListener";
 import useFetchingData from "src/app/hooks/useFetchingData";
-import LoadingModal from "src/app/components/Commons/modals/LoadingModal";
+import LoadingModal from "src/app/components/Commons/Modals/LoadingModal";
 
 const App: React.FC = () => {
   useFetchingData();

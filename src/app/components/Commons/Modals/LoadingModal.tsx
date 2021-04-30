@@ -1,9 +1,11 @@
 import React from "react";
-import Loading from "src/app/components/Commons/Loading";
 import { useDispatch, useSelector } from "react-redux";
-import BasicModalContent from "src/app/components/Commons/modals/BasicModalContent";
-import Modal from "src/app/components/Commons/modals/Modal";
+import BasicModalContent from "src/app/components/Commons/Modals/BasicModalContent";
+import Modal from "src/app/components/Commons/Modals/Modal";
 import { setGlobalModal } from "src/app/actions/globalAction";
+import * as loadingJson from 'src/assets/jsons/loading-cube.json';
+import Lottie from "react-lottie";
+import { getAnimatedJsonOptions } from "src/app/utils/helpers";
 
 export default function LoadingModal() {
   const dispatch = useDispatch();
@@ -24,7 +26,13 @@ export default function LoadingModal() {
         noPanel={true}
         content={(
           <div className="align-center">
-            <Loading/>
+            <Lottie
+              height={150}
+              width={200}
+              isClickToPauseDisabled={true}
+              options={getAnimatedJsonOptions(loadingJson)}
+            />
+            <div className='fw-3'>Now Loading...</div>
           </div>
         )}
       />
