@@ -40,8 +40,8 @@ export default function MetamaskAccount(props: any) {
       title: "Error",
       content: (
         <div className="text-center">
-          <p className="mb-2">Metamask should be on <b>{fromNetworkIdToName(ENV.NETWORK_ID)}</b>.</p>
-          <p>Currently it is on <b>{fromNetworkIdToName(currentNetworkId)}</b> instead.</p>
+          <p className="mb-2">Your Metamask should be on <b>{fromNetworkIdToName(ENV.NETWORK_ID)}</b>.</p>
+          <p>Currently it is on <b>{fromNetworkIdToName(currentNetworkId)}</b>.</p>
         </div>
       )
     });
