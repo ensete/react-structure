@@ -24,13 +24,14 @@
     justify-content: center;
     border-radius: 8px;
     border: solid 1px transparent;
-    background-color: black;
+    background-color: #093d4e;
     color: white;
     cursor: pointer;
     transition: all .3s;
 
     &:hover {
-      background-color: lighten(black, 20);
+      border-color: #3fa3c4;
+      background-color: darken(#093d4e, 3%);
     }
   }
 

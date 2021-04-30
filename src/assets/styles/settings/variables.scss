@@ -6,8 +6,8 @@ $image-path: '~src/assets/images/';
 $font-base: 'Montserrat', sans-serif;;
 
 /* ============ Colors ============ */
-$text: #333333;
-$bg: #F1F4F8;
+$text: white;
+$bg: #1f1d39;
 
 $color-1: #23a7b5;
 $color-2: #3fa3c4;
@@ -15,7 +15,13 @@ $color-3: #093d4e;
 $color-4: #0a4b61;
 $color-5: #2C7BFF;
 
-$gradient-1: linear-gradient(800deg, #1FC0E1, #1EE2CC);
+$gradient-1: linear-gradient(140deg, #1EE2CC, #1FC0E1);
+$gradient-2: linear-gradient(140deg, #ff85b2, #ff91dd);
+$gradient-3: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
+$gradient-4: linear-gradient(140deg, #ff91dd, #2d73db);
+$gradient-5: linear-gradient(135deg, rgba(0, 255, 170, 1.0) 0%, rgba(0, 187, 255, 1.0) 53%, rgba(69, 121, 245, 1.0) 100%);
+$gradient-6: linear-gradient(160deg, #00f2cd, #0074b3);
+$gradient-7: linear-gradient(170deg, #ffb046, #f52880);
 
 /* ============ Breakpoints ============ */
 $breakpoint-xxl: 1000px;

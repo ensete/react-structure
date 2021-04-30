@@ -12,7 +12,7 @@ interface LayoutProps {
 export default function Layout({component: Component, ...rest}: LayoutProps) {
   return (
     <Route {...rest} render={(props) => (
-      <div>
+      <div className='container'>
         <Header/>
         <Component {...props} />
         <Footer/>

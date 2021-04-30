@@ -1,0 +1,139 @@
+.modal {
+  max-width: 90%;
+  max-height: 70%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 1000;
+  pointer-events: none;
+
+  &-opened {
+    overflow: hidden;
+  }
+
+  &-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    z-index: 999;
+    overflow: auto;
+    transition: all .3s;
+
+    &--active {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__title {
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+
+  &__close-btn {
+    font-size: 25px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: $text;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: color .3s;
+
+    &:hover {
+      color: darken($text, 10);
+    }
+  }
+
+  &__content {
+    color: $text;
+    width: 440px;
+    max-width: 95%;
+    background-color: #0a4b61;
+    padding: 50px 30px 30px;
+    margin: 10px auto 50px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(0.9);
+    border-radius: 8px;
+    box-shadow: 0 12px 64px 0 rgba(19, 23, 32, 0.81);
+    transition: all .2s;
+  }
+
+  &--active {
+    pointer-events: visible;
+
+    .modal__content {
+      transform: scale(1);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: visible;
+    }
+  }
+
+  @media screen and (max-width: $breakpoint-s) {
+    &__close-btn {
+      right: 14px;
+    }
+
+    &__content {
+      padding: 35px 16px;
+    }
+  }
+}
+
+.basic-modal {
+  text-align: left;
+  font-size: 16px;
+  font-weight: normal;
+  width: 430px;
+  max-width: 100%;
+
+  &.large {
+    width: 750px;
+  }
+
+  &.medium {
+    width: 450px;
+  }
+
+  &.small {
+    width: 315px;
+  }
+
+  &__title {
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+
+  &__panel {
+    border-top: 1px dashed grey;
+    text-align: center;
+    padding: 20px 0 0;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+
+    .btn {
+      width: 120px;
+    }
+  }
+}
+
+.loading-modal {
+  .modal__content {
+    width: 110px;
+    padding: 30px 0;
+  }
+
+  img {
+    width: 30px;
+  }
+}

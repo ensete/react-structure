@@ -8,8 +8,8 @@ export default function Header() {
   }
 
   return (
-    <div className="header">
-      <div onClick={openImportModal}>Connect Wallet</div>
+    <div className="header pt-5 bp-5">
+      <div  className='btn btn--gradient' onClick={openImportModal}>Connect Wallet</div>
     </div>
   )
 }
