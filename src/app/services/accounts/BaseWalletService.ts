@@ -50,6 +50,11 @@ export default class BaseWalletService {
     this._throwErrorOnNetworkError(clearAccount);
 
     this.ethereum.on('accountsChanged', async (accounts: any) => {
+      if (accounts.length === 0) {
+        clearAccount();
+        return;
+      }
+
       if (accounts[0] === this.address) return;
 
       this.address = await this._requestAccounts();
