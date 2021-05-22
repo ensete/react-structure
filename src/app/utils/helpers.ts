@@ -117,7 +117,7 @@ export function roundNumber(number: number | string, precision = 6, isFormatted 
 
 export function formatNumber(number: any, precision = 0) {
   if (!number) return 0;
-  if (number > 0 && number < 1) return +(+number).toFixed(6);
+  if (number > 0 && number < 1) return toMeaningfulNumber(number);
 
   let bigNumber = new BigNumber(number);
   let formattedNumber = bigNumber.toFormat(precision);
@@ -163,4 +163,29 @@ export function multiplyOfTwoNumber(firstNumber: number | string, secondNumber: 
 export function toHex(number: string | number) {
   const bigNumber = new BigNumber(number);
   return "0x" + bigNumber.toString(16);
+}
+
+export function findByValue(array: any, key: string, value: string) {
+  return array.find((item: any) => {
+    return item[key] === value;
+  })
+}
+
+export function toMeaningfulNumber(number: number): number {
+  const meaningfulNumber = number.toFixed(20).match(/^-?\d*\.?0*\d{0,4}/);
+  if (!meaningfulNumber) return 0;
+  return +meaningfulNumber[0];
+}
+
+export function shortenNumber(number: number) {
+  const symbol = ["", "K", "M", "B", "T", "P", "E"];
+  const tier = Math.log10(Math.abs(number)) / 3 | 0;
+
+  if (tier === 0) return number;
+
+  const suffix = symbol[tier];
+  const scale = Math.pow(10, tier * 3);
+  const scaled = number / scale;
+
+  return scaled.toFixed(1) + suffix;
 }

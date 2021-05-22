@@ -90,6 +90,18 @@ export default class WalletConnectService extends BaseWalletService {
     })
   };
 
+  signMessage = async (message: string, address?: string): Promise<string> => {
+    address = address ? address : this.address ? this.address : '';
+
+    try {
+      if (!address) return '';
+      return await this.walletConnector.signPersonalMessage([message, address]);
+    } catch (err) {
+      console.log(err);
+      return '';
+    }
+  }
+
   getWalletType = () => {
     return WALLET_TYPE.WALLET_CONNECT;
   }

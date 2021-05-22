@@ -124,6 +124,18 @@ export default class BaseWalletService {
     })
   };
 
+  signMessage = async (message: string, address?: string, password?: string): Promise<string> => {
+    address = address ? address : this.address ? this.address : '';
+
+    try {
+      if (!address) return '';
+      return this.web3.eth.personal.sign(message, address, password);
+    } catch (e) {
+      console.log(e);
+      return '';
+    }
+  }
+
   sendSignedTransaction = (rawTx: string) => {
     return new Promise((resolve, reject) => {
       this.web3.eth.sendSignedTransaction(rawTx, function (err: any, txHash: string) {
