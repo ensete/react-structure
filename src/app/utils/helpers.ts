@@ -117,7 +117,7 @@ export function roundNumber(number: number | string, precision = 6, isFormatted 
 
 export function formatNumber(number: any, precision = 0) {
   if (!number) return 0;
-  if (number > 0 && number < 1) return toMeaningfulNumber(number);
+  if (number > 0 && number < 1) return toMeaningfulNumber(+number);
 
   let bigNumber = new BigNumber(number);
   let formattedNumber = bigNumber.toFormat(precision);
