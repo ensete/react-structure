@@ -11,6 +11,8 @@ import GlobalErrorBoundary from 'src/app/components/ErrorBoundaries/GlobalErrorB
 import * as serviceWorker from './serviceWorker';
 import rootSaga from 'src/app/sagas';
 import rootReducer from 'src/app/reducers';
+import { ApolloProvider } from '@apollo/client';
+import { client } from "src/app/services/apollo/client";
 import App from "src/app/components/App";
 
 const sagaMiddleware = createSagaMiddleware();
@@ -28,9 +30,11 @@ const persistor = persistStore(store);
 const AppDom = (
   <GlobalErrorBoundary>
     <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <App/>
-      </PersistGate>
+      <ApolloProvider client={client}>
+        <PersistGate persistor={persistor}>
+          <App/>
+        </PersistGate>
+      </ApolloProvider>
     </Provider>
   </GlobalErrorBoundary>
 );

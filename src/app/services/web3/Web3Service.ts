@@ -1,7 +1,7 @@
 import Web3 from "web3";
 import ENV from "src/app/configs/env";
 import { TX_STATUS } from "src/app/configs/constants";
-import { BroadcastedTx } from "src/app/types/tx";
+import { BroadcastedTx } from "src/app/types/txType";
 const ERC20ABI = require("src/app/configs/ABIs/ERC20.json");
 
 const web3Provider = new Web3(new Web3.providers.HttpProvider(ENV.NODE.URL));

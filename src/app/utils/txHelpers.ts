@@ -2,7 +2,7 @@ import Web3 from "web3";
 import { ACTIONS, DEFAULT_GAS_LIMIT } from "src/app/configs/constants";
 import { getBiggestNumber, toHex, toWei } from "src/app/utils/helpers";
 import ENV from "src/app/configs/env";
-import { Tx } from "src/app/types/tx-type";
+import { TxObject } from "src/app/types/txType";
 
 const ERC20ABI = require("src/app/configs/ABIs/ERC20.json");
 
@@ -57,7 +57,7 @@ function getTxObject(
   gasPrice?: string | number,
   gas?: string | number
 ) {
-  let txObject: Tx = {
+  let txObject: TxObject = {
     from: address,
     to: contractAddress,
     value: '0x0',
